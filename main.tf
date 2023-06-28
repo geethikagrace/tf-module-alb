@@ -42,7 +42,7 @@ resource "aws_lb_listener" "main" {
   default_action {
     type = "redirect"
 
-    redirect {
+    fixed_response {
       content_type = "text/plain"
       message_body = "unauthorized"
       status_code  = "403"
