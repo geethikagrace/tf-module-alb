@@ -29,7 +29,7 @@ resource "aws_lb" "main" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.sg.id]
   subnets            = var.subnets
-  tags = merge(var.tags, { Name = "${var.name}-alb-${var.env}" })
+  tags               = merge(var.tags, { Name = "${var.name}-alb-${var.env}" })
 
 }
 
@@ -40,7 +40,7 @@ resource "aws_lb_listener" "main" {
   protocol          = "HTTP"
 
   default_action {
-    type = "redirect"
+    type = "fixed-response"
 
     fixed_response {
       content_type = "text/plain"
